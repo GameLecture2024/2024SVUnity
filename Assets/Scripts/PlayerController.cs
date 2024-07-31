@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public CharacterController characterController; // 초록색 이름 타입 - 흰색 이름 변수
     public float speed = 10f;                       // 초기 속도를 10으로 설정한다.
 
-    private void Start()
+    private void Start() // 시작하고 한번만 실행된다.
     {
         
     }
@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     private void Update() // 움직임은 계속 변화하는 것이기 때문에 Update 작성해야겠다.
     {
         PlayerMove();
-        PlayerCameraMove();
+        //PlayerCameraMove(); - 
     }
 
     private void PlayerMove()
