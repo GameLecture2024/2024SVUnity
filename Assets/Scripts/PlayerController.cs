@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     // 초심자가 실수하기 쉬운 가장 많은 녀석 첫번째, 대소문자 오탈자
     public CharacterController characterController; // 초록색 이름 타입 - 흰색 이름 변수
     public float speed = 10f;                       // 초기 속도를 10으로 설정한다.
+    public float itemAddSpeed = 5f;
 
     private void Start() // 시작하고 한번만 실행된다.
     {
@@ -49,5 +50,19 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Goal"))
+        {
+            Debug.Log($"게임을 클리어햇습니다.");
+            Destroy(gameObject);
+        }
+
+        if(other.CompareTag("Item"))
+        {
+            speed = speed + itemAddSpeed;
+            Destroy(other.gameObject);
+        }
+    }
 
 }
