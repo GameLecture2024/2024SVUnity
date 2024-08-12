@@ -6,12 +6,17 @@ public class ObjectController : MonoBehaviour
 {
     public float speed;
 
+    public GameObject gameOverPanel; // 자동차가 Player랑 충돌했을 때 gameOverPanel 활성화 시켜준다.
+
     // Start is called before the first frame update
 
     void Start() // 시작할 때 한번 실행한다.
     {
         speed = 10;
         originPos = transform.position;
+
+        //gameOverPanel = GameObject.Find("Canvas/GameOverPanel");
+        //gameOverPanel.SetActive(false);
     }
 
 
@@ -40,6 +45,8 @@ public class ObjectController : MonoBehaviour
 
             // 충돌한 대상을 파괴한다.
             Destroy(collision.gameObject);
+
+            //gameOverPanel.SetActive(true);
         }
         if (collision.collider.CompareTag("Wall"))
         {
