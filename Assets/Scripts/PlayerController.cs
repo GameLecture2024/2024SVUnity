@@ -83,7 +83,8 @@ public class PlayerController : MonoBehaviour
     {
         if(other.CompareTag("Goal"))
         {
-            Debug.Log($"게임을 클리어햇습니다.");
+            MainUI.Instance.gameClearPanel.SetActive(true);
+            MainUI.Instance.gameClearCamera.gameObject.SetActive(true);
             Destroy(gameObject);
         }
 

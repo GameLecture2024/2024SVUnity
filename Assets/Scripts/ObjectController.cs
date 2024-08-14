@@ -6,8 +6,7 @@ public class ObjectController : MonoBehaviour
 {
     public float speed;
 
-    public GameObject gameOverPanel; // 자동차가 Player랑 충돌했을 때 gameOverPanel 활성화 시켜준다.
-
+    // 자동차가 Player랑 충돌했을 때 gameOverPanel 활성화 시켜준다.
     // Start is called before the first frame update
 
     void Start() // 시작할 때 한번 실행한다.
@@ -15,8 +14,7 @@ public class ObjectController : MonoBehaviour
         speed = 10;
         originPos = transform.position;
 
-        //gameOverPanel = GameObject.Find("Canvas/GameOverPanel");
-        //gameOverPanel.SetActive(false);
+        MainUI.Instance.gameOverPanel.SetActive(false); // MainUI 등록한 UI창을 비활성화를 한다.
     }
 
 
@@ -44,9 +42,9 @@ public class ObjectController : MonoBehaviour
             //Destroy(gameObject);
 
             // 충돌한 대상을 파괴한다.
-            Destroy(collision.gameObject);
-
-            //gameOverPanel.SetActive(true);
+            MainUI.Instance.gameOverCamera.gameObject.SetActive(true);  // 게임 종료 카메라를 활성화 환다.
+            Destroy(collision.gameObject);                              // 플레이어를 파괴 시킨다.
+            MainUI.Instance.gameOverPanel.SetActive(true);              // 게임 종료 UI를 활성화 한다.
         }
         if (collision.collider.CompareTag("Wall"))
         {
